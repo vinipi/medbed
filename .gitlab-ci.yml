@@ -16,7 +16,6 @@ build-linux:
     - cd front
     - yarn install --production=false --frozen-lockfile
     - yarn build
-    - yarn export
     - cd ../server
     - yarn install --production=false --frozen-lockfile
     - yarn prestart:prod
