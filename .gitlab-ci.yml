@@ -1,0 +1,96 @@
+stages:
+  - build
+  - docker
+  - deploy
+
+build-linux:
+  stage: build
+  image: node:lts-alpine
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    NODE_ENV: production
+  tags:
+    - docker
+  script:
+    - apk update && apk add -q git
+    - cd front
+    - yarn install --production=false --frozen-lockfile
+    - yarn build
+    - yarn export
+    - cd ../server
+    - yarn install --production=false --frozen-lockfile
+    - yarn prestart:prod
+  artifacts:
+    name: "medbed_${CI_COMMIT_REF_NAME}_$CI_PIPELINE_ID"
+    paths:
+      - .
+    expire_in: 1h
+
+docker-master:
+  stage: docker
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - master
+  except:
+    - tags
+  tags:
+    - stage
+  dependencies:
+    - build-linux
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.corteks.net
+    - docker build -t registry.corteks.net/corteks/medbed:latest .
+    - docker push registry.corteks.net/corteks/medbed:latest
+
+docker-tags:
+  stage: docker
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - tags
+  tags:
+    - stage
+  dependencies:
+    - build-linux
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.corteks.net
+    - docker build -t registry.corteks.net/corteks/medbed:$CI_COMMIT_TAG .
+    - docker push registry.corteks.net/corteks/medbed:latest
+
+deploy-preview:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - test_ci
+    - master
+    - /^release.*$/
+    - tags
+  tags:
+    - stage
+  dependencies:
+    - docker-master
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.corteks.net
+    - docker stop medbed-preview || echo 0
+    - docker rm medbed-preview || echo 0
+    - docker run -d --network="corteks_net_nginx_proxy" -e VIRTUAL_HOST=medbed.corteks.net -e LETSENCRYPT_HOST=medbed.corteks.net -e LETSENCRYPT_EMAIL=contact@corteks.fr --name medbed-preview registry.corteks.net/corteks/medbed:latest
+    - docker image prune -f
+
+deploy-production:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - tags
+  tags:
+    - stage
+  dependencies:
+    - docker-master
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.corteks.net
+    - docker stop medbed-prod || echo 0
+    - docker rm medbed-prod || echo 0
+    - docker run -d --network="corteks_net_nginx_proxy" -e VIRTUAL_HOST=medbed.corteks.fr -e LETSENCRYPT_HOST=medbed.corteks.fr -e LETSENCRYPT_EMAIL=contact@corteks.fr --name medbed-prod registry.corteks.net/corteks/medbed:$CI_COMMIT_TAG
+    - docker image prune -f

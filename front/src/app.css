@@ -1,0 +1,25 @@
+@import '~antd/dist/antd.css';
+
+.bg-primary {
+    background-color: #4190F7;
+  }
+  
+  .bg-success {
+    color: #fff;
+    background-color: #70c040;
+    border-color: #5d9e35;
+  }
+
+  .bg-success:hover {
+    color: #fff;
+    background-color: #6fd335;
+    border-color: #518a2e;
+  }
+  
+  .bg-warning {
+    background-color: #EFAF41;
+  }
+  
+  .bg-danger {
+    background-color: #E23C39;
+  }

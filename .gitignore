@@ -1,0 +1,13 @@
+# production
+/front/.next
+/front/out
+/front/dist
+/server/dist
+
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+*/node_modules/
+
+/front/pages/version.json
