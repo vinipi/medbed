@@ -1,7 +1,6 @@
 import { Controller, Inject, Get, Param, Query } from '@nestjs/common';
 import { SiteService } from './site.service';
 import { ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
-import { SiteWithUFDto } from './dto/sitewithufdto';
 import { Site } from './entities/site.entity';
 
 @Controller()
@@ -16,7 +15,7 @@ export class AppController {
         description: 'Return a site with all its UFs',
     })
     @ApiResponse({ status: 200, type: Site })
-    getSite(@Query('urlKey') urlKey): Promise<SiteWithUFDto> {
+    getSite(@Query('urlKey') urlKey): Promise<Site> {
         return this.siteService.findByUrlKey(urlKey);
     }
 
