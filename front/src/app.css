@@ -1,25 +1,47 @@
 @import '~antd/dist/antd.css';
-
 .bg-primary {
-    background-color: #4190F7;
-  }
-  
-  .bg-success {
-    color: #fff;
-    background-color: #70c040;
-    border-color: #5d9e35;
-  }
+  background-color: #4190F7;
+}
 
-  .bg-success:hover {
-    color: #fff;
-    background-color: #6fd335;
-    border-color: #518a2e;
-  }
-  
-  .bg-warning {
-    background-color: #EFAF41;
-  }
-  
-  .bg-danger {
-    background-color: #E23C39;
-  }
+.bg-success {
+  color: #fff;
+  background-color: #70c040;
+  border-color: #5d9e35;
+}
+
+.bg-success:hover {
+  color: #fff;
+  background-color: #6fd335;
+  border-color: #518a2e;
+}
+
+.bg-warning {
+  background-color: #EFAF41;
+}
+
+.bg-danger {
+  background-color: #E23C39;
+}
+
+.ant-collapse-content>.ant-collapse-content-box {
+  padding: 0;
+}
+
+.editable-cell {
+  position: relative;
+}
+
+.editable-cell-value-wrap {
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.editable-row:hover .editable-cell-value-wrap {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 4px 11px;
+}
+
+[data-theme='dark'] .editable-row:hover .editable-cell-value-wrap {
+  border: 1px solid #434343;
+}
