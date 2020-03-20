@@ -27,6 +27,7 @@ export class SiteService {
                 ...prev,
                 id: current.site_id,
                 name: current.site_name,
+                urlKey: current.urlKey,
             };
             accu.ufs.push({ ...current });
             return accu;
