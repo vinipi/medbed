@@ -14,7 +14,7 @@ export class SiteService {
         return this.siteRepository.find();
     }
 
-    find(): Promise<Site> {
+    find(id: number): Promise<Site> {
         return this.siteRepository.findOne(id);
     }
 
