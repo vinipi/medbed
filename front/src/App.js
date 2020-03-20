@@ -6,8 +6,9 @@ import './app.css';
 import Menu from './templates/Menu';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
+import SessionHandler from './components/sessionhandler';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 moment.locale('EN');
 
@@ -27,6 +28,7 @@ class App extends Component {
         this.setState({
             session: JSON.parse(window.localStorage.getItem('session'))
         });
+
     }
 
     updateState(newState) {
@@ -49,22 +51,22 @@ class App extends Component {
                         background: '#fff',
                         boxShadow: '0 2px 8px #f0f1f2',
                         zIndex: 10,
-                        maxWidth: '100%'
+                        maxWidth: '100%',
+                        padding: '0px',
+                        height: '94px'
                     }}>
+                        <SessionHandler></SessionHandler>
                         <Menu
                             updateAppState={this.updateState}
                             session={this.state.session}
                             disconnect={this.disconnect}
                         />
                     </Header>
-                    <Content style={{ padding: '0', marginTop: 64 }}>
+                    <Content style={{ padding: '0', marginTop: 94 }}>
                         <Switch>
                             <Route path="/" exact component={Home} />
                         </Switch>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>
-
-                    </Footer>
                 </Layout>
             </BrowserRouter>
         );
