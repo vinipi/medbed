@@ -65,7 +65,7 @@ const EditableCell = ({
                     }
                 ]}
             >
-                <Input ref={inputRef} type="number" onPressEnter={save} onBlur={save} />
+                <Input ref={inputRef} type="number" pattern="[0-9]*" onPressEnter={save} onBlur={save} />
             </Form.Item>
         ) : (
                 <div
