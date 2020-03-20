@@ -103,17 +103,17 @@ export class EditableTable extends React.Component {
                 {
                     key: '0',
                     label: 'total',
-                    value: '50'
+                    value: props.uf.bed_total
                 },
                 {
                     key: '1',
                     label: 'utilisés',
-                    value: '10'
+                    value: props.uf.bed_used_not_covid
                 },
                 {
                     key: '1',
                     label: 'utilisés COVID',
-                    value: '25'
+                    value: props.uf.bed_used_covid
                 }
             ],
             count: 3

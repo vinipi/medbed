@@ -5,7 +5,7 @@ import ApiService from '../services/api';
 
 class SessionHandler extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             site: {}
         };
@@ -22,6 +22,8 @@ class SessionHandler extends Component {
                 this.setState({
                     site
                 });
+
+                this.props.updateSite(site);
             })
             .catch((err) => {
                 console.error(err);

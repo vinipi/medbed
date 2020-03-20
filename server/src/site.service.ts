@@ -1,13 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Site } from './entities/site.entity';
-import { Repository } from 'typeorm';
+import { Repository, Connection } from 'typeorm';
+import { UF } from './entities/uf.entity';
 
 @Injectable()
 export class SiteService {
     constructor(
         @InjectRepository(Site)
         private siteRepository: Repository<Site>,
+        @Inject(Connection)
+        private connection: Connection,
     ) { }
 
     findAll(): Promise<Site[]> {
@@ -18,12 +21,17 @@ export class SiteService {
         return this.siteRepository.findOne(id);
     }
 
-    findByUrlKey(urlKey: string): Promise<Site> {
-        return this.siteRepository.findOne({
-            where: {
-                urlKey,
-            },
-        });
+    async findByUrlKey(urlKey: string): Promise<any> {
+        const res: any[] = await this.connection.query('SELECT site.id AS site_id, site.name AS site_name, uf.* FROM site INNER JOIN uf ON site.id = uf.site_id WHERE site.urlKey = ?', [urlKey]);
+        return res.reduce((prev, current) => {
+            const accu = {
+                ...prev,
+                id: current.site_id,
+                name: current.site_name,
+            };
+            accu.ufs.push({ ...current });
+            return accu;
+        }, { ufs: [] });
     }
 
     async remove(id: string): Promise<void> {

@@ -17,28 +17,15 @@ class App extends Component {
         super(props);
 
         this.state = {
-            session: null
+            site: {}
         };
 
-        this.updateState = this.updateState.bind(this);
-        this.disconnect = this.disconnect.bind(this);
     }
 
-    componentDidMount() {
+    updateSite = (site) => {
         this.setState({
-            session: JSON.parse(window.localStorage.getItem('session'))
+            site: site
         });
-
-    }
-
-    updateState(newState) {
-        this.setState(Object.assign({}, this.state, newState));
-    }
-
-    disconnect() {
-        window.localStorage.clear();
-        this.setState({ session: null });
-        window.location.href = '/';
     }
 
     render() {
@@ -55,7 +42,11 @@ class App extends Component {
                         padding: '0px',
                         height: '94px'
                     }}>
-                        <SessionHandler></SessionHandler>
+                        <SessionHandler
+                            updateSite={
+                                this.updateSite
+                            }
+                        ></SessionHandler>
                         <Menu
                             updateAppState={this.updateState}
                             session={this.state.session}
@@ -64,7 +55,7 @@ class App extends Component {
                     </Header>
                     <Content style={{ padding: '0', marginTop: 94 }}>
                         <Switch>
-                            <Route path="/" exact component={Home} />
+                            <Route path="/" exact component={() => { return <Home site={this.state.site}></Home>; }} />
                         </Switch>
                     </Content>
                 </Layout>
