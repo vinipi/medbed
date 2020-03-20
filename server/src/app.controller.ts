@@ -1,9 +1,10 @@
-import { Controller, Inject, Get, Param, Query, Put, Body } from '@nestjs/common';
+import { Controller, Inject, Get, Param, Query, Put, Body, Post } from '@nestjs/common';
 import { SiteService } from './site.service';
 import { ApiOperation, ApiResponse, ApiQuery, ApiBody } from '@nestjs/swagger';
 import { Site } from './entities/site.entity';
 import { UFService } from './uf.service';
 import { UfUpdateDto } from './uf-update.dto';
+import { UfCreateDto } from './uf-create.dto';
 
 @Controller()
 export class AppController {
@@ -39,4 +40,21 @@ export class AppController {
         );
     }
 
+    @Post('/api/site/:id/uf/')
+    @ApiOperation({
+        description: 'Create an uf for a site',
+    })
+    @ApiResponse({ status: 200, type: 'boolean' })
+    createUf(
+        @Body() ufCreateDto: UfCreateDto,
+    ): Promise<any> {
+        return this.ufService.create(
+            ufCreateDto.name,
+            ufCreateDto.siteId,
+            ufCreateDto.bedOtherTotal,
+            ufCreateDto.bedOtherUsed,
+            ufCreateDto.bedCovidTotal,
+            ufCreateDto.bedCovidUsed,
+        );
+    }
 }

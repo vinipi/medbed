@@ -21,7 +21,8 @@ export class UFService {
     ): Promise<any> {
         await this.connection.query(
             `UPDATE uf
-            SET bed_other_total = ?,
+            SET
+            bed_other_total = ?,
             bed_other_used = ?,
             bed_covid_total = ?,
             bed_covid_used = ?
@@ -32,6 +33,36 @@ export class UFService {
                 bedCovidTotal,
                 bedCovidUsed,
                 id,
+            ],
+        );
+    }
+
+    async create(
+        name: string,
+        siteId: number,
+        bedOtherTotal: number,
+        bedOtherUsed: number,
+        bedCovidTotal: number,
+        bedCovidUsed: number,
+    ): Promise<any> {
+        await this.connection.query(
+            `INSERT INTO uf (
+                name,
+                site_id,
+                bed_other_total,
+                bed_other_used,
+                bed_covid_total,
+                bed_covid_used
+            ) VALUES (
+                ?,?,?,?,?,?
+            )`,
+            [
+                name,
+                siteId,
+                bedOtherTotal,
+                bedOtherUsed,
+                bedCovidTotal,
+                bedCovidUsed,
             ],
         );
     }

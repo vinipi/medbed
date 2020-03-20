@@ -21,4 +21,16 @@ export class Site {
     @OneToMany(type => UF, uf => uf.siteId)
     ufs: UF[];
 
+    @ApiProperty()
+    bedOtherUsed: number;
+
+    @ApiProperty()
+    bedOtherAvailable: number;
+
+    @ApiProperty()
+    bedCovidUsed: number;
+
+    @ApiProperty()
+    bedCovidAvailable: number;
+
 }

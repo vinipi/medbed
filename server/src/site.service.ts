@@ -21,22 +21,42 @@ export class SiteService {
     }
 
     async findByUrlKey(urlKey: string): Promise<any> {
-        const res: any[] = await this.connection.query(
-            `SELECT site.id AS siteId, site.name AS siteName,
-            uf.id, uf.name, uf.bed_other_total AS bedOtherTotal, uf.bed_other_used AS bedOtherUsed, uf.bed_other_available AS bedOtherAvailable, uf.bed_covid_total AS bedCovidTotal, uf.bed_covid_used AS bedCovidUsed, uf.bed_covid_available AS bedCovidAvailable
-            FROM site INNER JOIN uf ON site.id = uf.site_id
+        const siteResult = await this.connection.query(
+            `SELECT
+            site.id AS siteId,
+            site.name AS siteName,
+            SUM(uf.bed_other_used) AS siteBedOtherUsed,
+            SUM(uf.bed_other_available) AS siteBedOtherAvailable,
+            SUM(uf.bed_covid_used) AS siteBedCovidUsed,
+            SUM(uf.bed_covid_available) AS siteBedCovidAvailable
+            FROM site
+            INNER JOIN uf ON site.id = uf.site_id
             WHERE site.url_key = ?`,
             [urlKey],
         );
-        return res.reduce((prev, current) => {
-            const accu = {
-                ...prev,
-                id: current.siteId,
-                name: current.siteName,
-            };
-            accu.ufs.push({ ...current });
-            return accu;
-        }, { ufs: [] });
+        const ufResult: any[] = await this.connection.query(
+            `SELECT
+            uf.id,
+            uf.name,
+            uf.bed_other_total AS bedOtherTotal,
+            uf.bed_other_used AS bedOtherUsed,
+            uf.bed_other_available AS bedOtherAvailable,
+            uf.bed_covid_total AS bedCovidTotal,
+            uf.bed_covid_used AS bedCovidUsed,
+            uf.bed_covid_available AS bedCovidAvailable
+            FROM site
+            INNER JOIN uf ON site.id = uf.site_id
+            WHERE site.url_key = ?`,
+            [urlKey],
+        );
+        const result = {
+            ...siteResult[0],
+            ufs: [],
+        };
+        ufResult.forEach((uf) => {
+            result.ufs.push(uf);
+        });
+        return result;
     }
 
     async remove(id: string): Promise<void> {
