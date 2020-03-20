@@ -17,9 +17,7 @@ class Home extends Component {
                 >
                     <Panel header="UF 1" key="1" extra={genExtra()}>
                         <div>
-                            <div>
-                                <EditableTable></EditableTable>
-                            </div>
+                            <EditableTable></EditableTable>
                         </div>
                     </Panel>
                     <Panel header="UF 2" key="2" extra={genExtra()}>
