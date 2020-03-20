@@ -18,6 +18,14 @@ export class SiteService {
         return this.siteRepository.findOne(id);
     }
 
+    findByUrlKey(urlKey: string): Promise<Site> {
+        return this.siteRepository.findOne({
+            where: {
+                urlKey,
+            },
+        });
+    }
+
     async remove(id: string): Promise<void> {
         await this.siteRepository.delete(id);
     }
