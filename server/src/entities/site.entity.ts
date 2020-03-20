@@ -14,8 +14,7 @@ export class Site {
     @Column()
     name: string;
 
-    @ApiProperty()
-    @Column()
+    @Column({ name: 'url_key' })
     urlKey: string;
 
     @ApiProperty({ type: [UF] })

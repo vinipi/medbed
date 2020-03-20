@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Site } from './entities/site.entity';
 import { UF } from './entities/uf.entity';
 import { SiteService } from './site.service';
+import { UFService } from './uf.service';
 
 @Module({
   imports: [
@@ -23,9 +24,9 @@ import { SiteService } from './site.service';
       entities: [Site, UF],
       synchronize: false,
     }),
-    TypeOrmModule.forFeature([Site]),
+    TypeOrmModule.forFeature([Site, UF]),
   ],
   controllers: [AppController],
-  providers: [AppService, SiteService],
+  providers: [AppService, SiteService, UFService],
 })
 export class AppModule { }

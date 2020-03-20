@@ -21,13 +21,18 @@ export class SiteService {
     }
 
     async findByUrlKey(urlKey: string): Promise<any> {
-        const res: any[] = await this.connection.query('SELECT site.id AS site_id, site.name AS site_name, uf.* FROM site INNER JOIN uf ON site.id = uf.site_id WHERE site.urlKey = ?', [urlKey]);
+        const res: any[] = await this.connection.query(
+            `SELECT site.id AS siteId, site.name AS siteName,
+            uf.id, uf.name, uf.bed_other_total AS bedOtherTotal, uf.bed_other_used AS bedOtherUsed, uf.bed_other_available AS bedOtherAvailable, uf.bed_covid_total AS bedCovidTotal, uf.bed_covid_used AS bedCovidUsed, uf.bed_covid_available AS bedCovidAvailable
+            FROM site INNER JOIN uf ON site.id = uf.site_id
+            WHERE site.url_key = ?`,
+            [urlKey],
+        );
         return res.reduce((prev, current) => {
             const accu = {
                 ...prev,
-                id: current.site_id,
-                name: current.site_name,
-                urlKey: current.urlKey,
+                id: current.siteId,
+                name: current.siteName,
             };
             accu.ufs.push({ ...current });
             return accu;

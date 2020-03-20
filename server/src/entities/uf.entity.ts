@@ -15,23 +15,23 @@ export class UF {
     name: string;
 
     @ApiProperty()
-    @Column()
+    @Column({ name: 'site_id' })
     siteId: number;
 
     @ApiProperty()
-    @Column()
+    @Column({ name: 'bed_total' })
     bedTotal: number;
 
     @ApiProperty()
-    @Column()
+    @Column({ name: 'bed_available' })
     bedAvailable: number;
 
     @ApiProperty()
-    @Column()
+    @Column({ name: 'bed_user_covid' })
     bedUserCovid: number;
 
     @ApiProperty()
-    @Column()
+    @Column({ name: 'bed_used_not_covid' })
     bedUsedNotCovid: number;
 
 }
