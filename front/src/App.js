@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import Home from "./routes/home";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import moment from "moment";
-import "./app.css";
-import Menu from "./templates/Menu";
-import { Layout } from "antd";
-import "antd/dist/antd.css";
+import React, { Component } from 'react';
+import Home from './routes/home';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import moment from 'moment';
+import './app.css';
+import Menu from './templates/Menu';
+import { Layout } from 'antd';
+import 'antd/dist/antd.css';
 
 const { Header, Content, Footer } = Layout;
 
-moment.locale("EN");
+moment.locale('EN');
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            session: null,
+            session: null
         };
 
         this.updateState = this.updateState.bind(this);
@@ -25,7 +25,7 @@ class App extends Component {
 
     componentDidMount() {
         this.setState({
-            session: JSON.parse(window.localStorage.getItem("session")),
+            session: JSON.parse(window.localStorage.getItem('session'))
         });
     }
 
@@ -36,7 +36,7 @@ class App extends Component {
     disconnect() {
         window.localStorage.clear();
         this.setState({ session: null });
-        window.location.href = "/";
+        window.location.href = '/';
     }
 
     render() {
@@ -44,12 +44,12 @@ class App extends Component {
             <BrowserRouter>
                 <Layout>
                     <Header style={{
-                        position: "fixed",
-                        width: "100%",
-                        background: "#fff",
-                        boxShadow: "0 2px 8px #f0f1f2",
+                        position: 'fixed',
+                        width: '100%',
+                        background: '#fff',
+                        boxShadow: '0 2px 8px #f0f1f2',
                         zIndex: 10,
-                        maxWidth: "100%",
+                        maxWidth: '100%'
                     }}>
                         <Menu
                             updateAppState={this.updateState}
@@ -57,12 +57,12 @@ class App extends Component {
                             disconnect={this.disconnect}
                         />
                     </Header>
-                    <Content style={{ padding: "0", marginTop: 64 }}>
+                    <Content style={{ padding: '0', marginTop: 64 }}>
                         <Switch>
                             <Route path="/" exact component={Home} />
                         </Switch>
                     </Content>
-                    <Footer style={{ textAlign: "center" }}>
+                    <Footer style={{ textAlign: 'center' }}>
 
                     </Footer>
                 </Layout>
