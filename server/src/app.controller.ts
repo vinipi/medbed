@@ -14,13 +14,14 @@ export class AppController {
     ) { }
 
     @Get('/api/site')
-    @ApiQuery({ name: 'urlKey', type: 'string' })
+    @ApiQuery({ name: 'urlKey', type: 'string', required: false })
     @ApiOperation({
         description: 'Return a site with all its UFs',
     })
     @ApiResponse({ status: 200, type: Site })
-    getSite(@Query('urlKey') urlKey): Promise<Site> {
-        return this.siteService.findByUrlKey(urlKey);
+    getSite(@Query('urlKey') urlKey): Promise<Site | Site[]> {
+        if (urlKey) return this.siteService.findByUrlKey(urlKey);
+        return this.siteService.findAll();
     }
 
     @Put('/api/uf/:id')
