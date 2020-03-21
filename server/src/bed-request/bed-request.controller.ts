@@ -1,7 +1,7 @@
 import { Controller, Get, Query, Post, Body, Put, Param } from '@nestjs/common';
-import { ApiTags, ApiQuery, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiQuery, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
 import { BedRequestService } from './bed-request.service';
-import { BedRequest } from '../entities/bed-request.entity';
+import { BedRequest, Status } from '../entities/bed-request.entity';
 import { BedRequestCreateDto } from '../bed-request/dto/bedrequest-create.dto';
 import { BedRequestUpdateDto } from './dto/bedrequest-update.dto';
 
@@ -14,13 +14,19 @@ export class BedRequestController {
 
     @Get('/')
     @ApiQuery({ name: 'siteId', type: 'number', required: false })
+    @ApiQuery({ name: 'status', type: 'string', required: false })
     @ApiOperation({
         description: 'Return all bed requests',
     })
     @ApiResponse({ status: 200, type: BedRequest })
-    getBedRequest(@Query('siteId') siteId): Promise<BedRequest[]> {
-        if (siteId) return this.bedRequestService.findBySiteId(siteId);
-        return this.bedRequestService.findAll();
+    getBedRequest(
+        @Query('siteId') siteId,
+        @Query('status') status,
+    ): Promise<BedRequest[]> {
+        const where: { siteId?: number, status?: string; } = {};
+        if (siteId) where.siteId = siteId;
+        if (status) where.status = status;
+        return this.bedRequestService.findBy(where);
     }
 
     @Post('/')

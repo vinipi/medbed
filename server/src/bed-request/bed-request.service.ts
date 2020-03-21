@@ -25,11 +25,9 @@ export class BedRequestService {
         return this.bedRequestRepository.findOne(id);
     }
 
-    findBySiteId(siteId: number): Promise<any> {
+    findBy(where: any): Promise<any> {
         return this.bedRequestRepository.find({
-            where: {
-                siteId,
-            },
+            where,
             order: {
                 createdAt: 'DESC',
                 id: 'DESC',
