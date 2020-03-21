@@ -15,8 +15,8 @@ export class SiteService {
     findAll(): Promise<Site[]> {
         return this.connection.query(
             `SELECT
-            site.id AS siteId,
-            site.name AS siteName,
+            site.id AS id,
+            site.name AS name,
             SUM(uf.bed_other_used) AS siteBedOtherUsed,
             SUM(uf.bed_other_available) AS siteBedOtherAvailable,
             SUM(uf.bed_covid_used) AS siteBedCovidUsed,
@@ -33,8 +33,8 @@ export class SiteService {
     async findByUrlKey(urlKey: string): Promise<any> {
         const siteResult = await this.connection.query(
             `SELECT
-            site.id AS siteId,
-            site.name AS siteName,
+            site.id AS id,
+            site.name AS name,
             SUM(uf.bed_other_used) AS siteBedOtherUsed,
             SUM(uf.bed_other_available) AS siteBedOtherAvailable,
             SUM(uf.bed_covid_used) AS siteBedCovidUsed,
