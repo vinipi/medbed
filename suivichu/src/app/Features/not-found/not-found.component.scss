@@ -1,0 +1,26 @@
+#container {
+  color: #707070;
+}
+
+.titleDiv {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#header {
+  margin: 0 auto;
+  text-align: center;
+  color: #707070;
+  background: white;
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 1.3rem;
+  }
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  padding-top: 25px;
+  padding-bottom: 25px;
+}

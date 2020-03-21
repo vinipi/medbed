@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseHref: '/',
-  baseAPI: 'http://localhost:10080/api'
+  baseAPI: 'http://localhost:10080/api',
+  appTitle: 'Suivi CHU dev'
 };
 
 /*
