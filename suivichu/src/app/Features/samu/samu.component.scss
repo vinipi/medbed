@@ -200,11 +200,25 @@
     margin-bottom: 10px;
 }
 
-.center_lit{
+.flexAll,.flexInside{
   display: flex;
-  justify-content: space-around;
-  margin: 5%;
+  justify-content: space-between;
 }
+
+
+.textInside{
+  margin: auto 2vh;
+  position: relative;
+
+}
+.flexInside{
+  margin: 3vh 1vh;
+}
+#flexOne, #flextwwo {
+  margin: 3vh 0;
+}
+
+
 
 
 .middle {
@@ -249,7 +263,7 @@ input[type=number]  {
 
 }
 #register{
-  background-color: blue;
+  background-color: #49B8FF;
  padding: 3vh 5vh;
  text-align: center;
  margin : 2vh auto;
@@ -262,7 +276,7 @@ input[type=number]  {
 #add{
   margin:  20%  auto;
   text-align: center;
-  background: blue;
+  background: #49B8FF;
   width: calc(100% - 40px);
   padding:  5% 0% ;
   color: #ffff;
@@ -272,7 +286,7 @@ input[type=number]  {
 }
 
 #thanks {
-  background: grey;
+  background: #49B8FF;
   color: #ffff;
   height: 5vh;
   text-align: center;
@@ -280,6 +294,12 @@ input[type=number]  {
   flex-direction: column;
   justify-content: space-around;
 
+}
 
+.rigntTitle{
+  padding-right: 20%
+}
 
+.displayFLex{
+  display: flex;
 }

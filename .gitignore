@@ -1,13 +1,12 @@
 # production
 /front/.next
 /front/out
-/front/dist
-/server/dist
+**/dist
 
 yarn-debug.log*
 yarn-error.log*
 
 # Dependency directories
-*/node_modules/
+node_modules
 
 /front/pages/version.json

@@ -9,6 +9,8 @@ import { SiteModule } from './site/site.module';
 import { UFModule } from './uf/uf.module';
 import { BedRequest } from './entities/bed-request.entity';
 import { BedRequestModule } from './bed-request/bed-request.module';
+import { HospitalUser } from './entities/hospital-user.entity';
+import { HospitalUserModule } from './hospital-user/hospital-user.module';
 
 @Module({
   imports: [
@@ -22,13 +24,13 @@ import { BedRequestModule } from './bed-request/bed-request.module';
       username: 'medbed_test',
       password: 'Azerty01',
       database: 'medbed_test',
-      entities: [Site, UF, BedRequest],
+      entities: [Site, UF, BedRequest, HospitalUser],
       synchronize: false,
     }),
-    TypeOrmModule.forFeature([Site, UF, BedRequest]),
     SiteModule,
     UFModule,
     BedRequestModule,
+    HospitalUserModule,
   ],
   controllers: [AppController],
   providers: [],

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SamuComponent } from './samu.component';
 
-describe('DisponibilityComponent', () => {
+describe('SamuComponent', () => {
   let component: SamuComponent;
   let fixture: ComponentFixture<SamuComponent>;
 

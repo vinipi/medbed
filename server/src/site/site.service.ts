@@ -15,12 +15,12 @@ export class SiteService {
     findAll(): Promise<Site[]> {
         return this.connection.query(
             `SELECT
-            site.id AS siteId,
-            site.name AS siteName,
-            SUM(uf.bed_other_used) AS siteBedOtherUsed,
-            SUM(uf.bed_other_available) AS siteBedOtherAvailable,
-            SUM(uf.bed_covid_used) AS siteBedCovidUsed,
-            SUM(uf.bed_covid_available) AS siteBedCovidAvailable
+            site.id AS id,
+            site.name AS name,
+            SUM(uf.bed_other_used) AS bedOtherUsed,
+            SUM(uf.bed_other_available) AS bedOtherAvailable,
+            SUM(uf.bed_covid_used) AS bedCovidUsed,
+            SUM(uf.bed_covid_available) AS bedCovidAvailable
             FROM site
             INNER JOIN uf ON site.id = uf.site_id`,
         );
@@ -33,12 +33,12 @@ export class SiteService {
     async findByUrlKey(urlKey: string): Promise<any> {
         const siteResult = await this.connection.query(
             `SELECT
-            site.id AS siteId,
-            site.name AS siteName,
-            SUM(uf.bed_other_used) AS siteBedOtherUsed,
-            SUM(uf.bed_other_available) AS siteBedOtherAvailable,
-            SUM(uf.bed_covid_used) AS siteBedCovidUsed,
-            SUM(uf.bed_covid_available) AS siteBedCovidAvailable
+            site.id AS id,
+            site.name AS name,
+            SUM(uf.bed_other_used) AS bedOtherUsed,
+            SUM(uf.bed_other_available) AS bedOtherAvailable,
+            SUM(uf.bed_covid_used) AS bedCovidUsed,
+            SUM(uf.bed_covid_available) AS bedCovidAvailable
             FROM site
             INNER JOIN uf ON site.id = uf.site_id
             WHERE site.url_key = ?`,

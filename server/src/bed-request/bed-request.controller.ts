@@ -1,7 +1,7 @@
 import { Controller, Get, Query, Post, Body, Put, Param } from '@nestjs/common';
-import { ApiTags, ApiQuery, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import { ApiTags, ApiQuery, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { BedRequestService } from './bed-request.service';
-import { BedRequest, Status } from '../entities/bed-request.entity';
+import { BedRequest } from '../entities/bed-request.entity';
 import { BedRequestCreateDto } from '../bed-request/dto/bedrequest-create.dto';
 import { BedRequestUpdateDto } from './dto/bedrequest-update.dto';
 

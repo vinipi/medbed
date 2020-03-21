@@ -12,10 +12,10 @@ build-linux:
   tags:
     - docker
   script:
-    - apk update && apk add -q git
+    # - apk update && apk add -q git
     - cd suivichu
     - yarn install --production=false --frozen-lockfile
-    - yarn build
+    - yarn build --prod
     - cd ../server
     - yarn install --production=false --frozen-lockfile
     - yarn prestart:prod
