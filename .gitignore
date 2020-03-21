@@ -1,6 +1,5 @@
 # production
-/front/.next
-/front/out
+*.bak
 **/dist
 
 yarn-debug.log*

@@ -16,12 +16,7 @@ export class ApiService {
 
   // UF = Unité Fonctionnelle
   getSiteListUFs(urlKey: string) { // GET ​/api​/site => Return a site with all its UFs
-    const headersParamaters = { urlKey: urlKey };
-    const httpOptions = {
-      headers: { 'Content-Type': 'application/json' },
-      params: { ...headersParamaters}
-    };
-    return this.http.get<Site>(this._baseHrefSiteURL, httpOptions); 
+    return this.http.get<Site>(this._baseHrefSiteURL + urlKey);
   }
 
   updateBedUF() { // PUT ​/api/uf/{id} => Update bed in an UF

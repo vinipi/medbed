@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SamuComponent implements OnInit {
 
+  disponibilityChecked = true;
   constructor() { }
 
   ngOnInit(): void {
