@@ -1,29 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DisponibilityComponent } from './Features/disponibility/disponibility.component';
+import { SamuComponent } from './Features/samu/samu.component';
 import { ReferentComponent } from './Features/referent/referent.component';
 import { NotFoundComponent } from './Features/not-found/not-found.component';
 
 
 const routes: Routes = [
-  {
-    path: 'disponibility',
-    component: DisponibilityComponent,
-    pathMatch: 'full',
-    data: { title: "Gestion des lits" }
-  },
+  { path: 'samu', component: SamuComponent },
+  { path: 'referent', component: ReferentComponent },
   {
     path: 'referent',
-    component: ReferentComponent,
-    pathMatch: 'full',
-    data: { title: "Disponibilités de lits" }
+    component: ReferentComponent
   },
   {
-    path: '**',
-    component: NotFoundComponent,
-    data: { title: "Page non trouvée" }
-  }
+    path: '',
+    redirectTo: '/samu',
+    pathMatch: 'full'
+  },
+  { path: '**', component: NotFoundComponent }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
