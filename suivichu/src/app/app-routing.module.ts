@@ -6,24 +6,20 @@ import { NotFoundComponent } from './Features/not-found/not-found.component';
 
 
 const routes: Routes = [
-  {
-    path: 'samu',
-    component: SamuComponent,
-    pathMatch: 'full',
-    data: { title: "Etat des lits" }
-  },
+  { path: 'samu', component: SamuComponent },
+  { path: 'referent', component: ReferentComponent },
   {
     path: 'referent',
-    component: ReferentComponent,
-    pathMatch: 'full',
-    data: { title: "Gestion des lits" }
+    component: ReferentComponent
   },
   {
-    path: '**',
-    component: NotFoundComponent,
-    data: { title: "Page non trouvée" }
-  }
+    path: '',
+    redirectTo: '/disponibility',
+    pathMatch: 'full'
+  },
+  { path: '**', component: NotFoundComponent }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
