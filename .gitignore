@@ -1,8 +1,7 @@
 # production
 /front/.next
 /front/out
-/front/dist
-/server/dist
+**/dist
 
 yarn-debug.log*
 yarn-error.log*
