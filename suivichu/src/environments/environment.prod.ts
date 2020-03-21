@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-	baseHref: '/',
-  baseAPI: 'http://localhost:3000',
+  baseHref: '/',
+  baseAPI: location.origin + '/api',
   appTitle: 'Suivi CHU'
 };
