@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100412
 File Encoding         : 65001
 
-Date: 2020-03-21 19:01:22
+Date: 2020-03-21 20:27:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,14 +44,14 @@ CREATE TABLE `hospital_user` (
   `firstname` char(255) DEFAULT NULL,
   `phone_number` char(16) DEFAULT NULL,
   `mail` char(64) DEFAULT NULL,
-  `site_id` int(10) unsigned DEFAULT NULL,
+  `site_id` int(10) unsigned NOT NULL,
   `url_key` char(64) GENERATED ALWAYS AS (sha(concat(`lastname`,`firstname`,`site_id`))) VIRTUAL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `fk_hospital_user_site_id` (`site_id`),
-  CONSTRAINT `fk_hospital_user_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_hospital_user_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of hospital_user
