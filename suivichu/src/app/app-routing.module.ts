@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/disponibility',
+    redirectTo: '/samu',
     pathMatch: 'full'
   },
   { path: '**', component: NotFoundComponent }
