@@ -13,7 +13,7 @@ build-linux:
     - docker
   script:
     - apk update && apk add -q git
-    - cd front
+    - cd suivichu
     - yarn install --production=false --frozen-lockfile
     - yarn build
     - cd ../server

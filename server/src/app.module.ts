@@ -13,7 +13,7 @@ import { BedRequestModule } from './bed-request/bed-request.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'front', 'build'),
+      rootPath: join(__dirname, '..', '..', 'suivichu', 'dist', 'suivichu'),
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
