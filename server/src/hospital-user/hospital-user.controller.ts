@@ -4,7 +4,7 @@ import { UfUpdateDto } from '../uf/dto/uf-update.dto';
 import { UFService } from '../uf/uf.service';
 import { UfCreateDto } from '../uf/dto/uf-create.dto';
 import { HospitalUserService } from './hospital-user.service';
-import { HospitalUser } from 'src/entities/hospital-user.entity';
+import { HospitalUser } from '../entities/hospital-user.entity';
 import { HospitalUserCreateDto } from './dto/hospitaluser-create-dto';
 
 @Controller('/api/hospitalUser')
