@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Site } from 'src/entities/site.entity';
-import { UF } from 'src/entities/uf.entity';
+import { Site } from '../entities/site.entity';
+import { UF } from '../entities/uf.entity';
 import { SiteService } from './site.service';
 import { SiteController } from './site.controller';
 

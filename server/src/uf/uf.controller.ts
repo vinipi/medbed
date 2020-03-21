@@ -1,9 +1,8 @@
 import { Controller, Body, Put, Post, Param } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { UfUpdateDto } from 'src/uf/dto/uf-update.dto';
-import { UFService } from 'src/uf/uf.service';
-import { UfCreateDto } from 'src/uf/dto/uf-create.dto';
-import { identity } from 'rxjs';
+import { UfUpdateDto } from '../uf/dto/uf-update.dto';
+import { UFService } from '../uf/uf.service';
+import { UfCreateDto } from '../uf/dto/uf-create.dto';
 
 @Controller('/api/uf')
 @ApiTags('UF')

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Connection } from 'typeorm';
-import { BedRequest, Status } from 'src/entities/bed-request.entity';
+import { BedRequest, Status } from '../entities/bed-request.entity';
 
 @Injectable()
 export class BedRequestService {

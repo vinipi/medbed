@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Site } from 'src/entities/site.entity';
-import { UF } from 'src/entities/uf.entity';
-import { BedRequest } from 'src/entities/bed-request.entity';
+import { Site } from '../entities/site.entity';
+import { UF } from '../entities/uf.entity';
+import { BedRequest } from '../entities/bed-request.entity';
 import { BedRequestController } from './bed-request.controller';
 import { BedRequestService } from './bed-request.service';
 

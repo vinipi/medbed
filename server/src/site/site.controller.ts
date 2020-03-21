@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiTags, ApiQuery, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { SiteService } from './site.service';
-import { Site } from 'src/entities/site.entity';
+import { Site } from '../entities/site.entity';
 
 @Controller('/api/site')
 @ApiTags('Site')
