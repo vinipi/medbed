@@ -1,7 +1,7 @@
 <div id="container">
     <div id="header">
         <h1>Gestion des lits</h1>
-        <p>Site Hautpierre</p>
+        <p>{{currentSite?.name}}</p>
     </div>
     <div class="roundDiv" id="newDemand">
         <p class="titleDiv">Nouvelle demande de lit COVID</p>
@@ -16,20 +16,20 @@
             <div class="flexDesignLit">
                 <div>
                     <div class="divImgBed greenBed">
-                    <img src="./assets/Bed_available.png">
-                </div>
+                        <img src="./assets/Bed_available.png">
+                    </div>
                     <div class="divAavailabilityBed">
-                        <p>32</p>
+                        <p>{{currentSite?.bedCovidAvailable}}</p>
                         <p class="availabilityLit">Disponibles</p>
                     </div>
                 </div>
                 <div id="barre"></div>
                 <div>
-                    <div class="divImgBed redBed"> 
-                    <img src="./assets/Bed_busy.png">
-                </div>
+                    <div class="divImgBed redBed">
+                        <img src="./assets/Bed_busy.png">
+                    </div>
                     <div class="divAavailabilityBed">
-                        <p>4</p>
+                        <p>{{currentSite?.bedCovidUsed}}</p>
                         <p class="availabilityLit">Occupés</p>
                     </div>
                 </div>
@@ -40,19 +40,19 @@
             <div class="flexDesignLit">
                 <div>
                     <div class="divImgBed greenBed">
-                    <img src="./assets/Bed_available.png">
-                </div>
+                        <img src="./assets/Bed_available.png">
+                    </div>
                     <div class="divAavailabilityBed">
-                        <p>4</p>
+                        <p>{{currentSite?.bedOtherAvailable}}</p>
                         <p class="availabilityLit">Disponibles</p>
                     </div>
                 </div>
                 <div>
                     <div class="divImgBed redBed">
-                    <img src="./assets/Bed_busy.png">
-                </div>
+                        <img src="./assets/Bed_busy.png">
+                    </div>
                     <div class="divAavailabilityBed">
-                        <p>8</p>
+                        <p>{{currentSite?.bedOtherUsed}}</p>
                         <p class="availabilityLit">Occupés</p>
                     </div>
                 </div>
@@ -72,14 +72,16 @@
                 <p>UF</p>
                 <select>
                     <option value="">Tous</option>
+                    <option *ngFor="let uf of currentSite?.ufs" [value]="uf.id">
+                        {{uf.name}}
+                    </option>
                 </select>
             </div>
         </div>
         <div id="disponibility">
             <p>Disponibilité</p>
             <div>
-                <input type="radio" id="huey" name="drone" value="huey"
-                checked>
+                <input type="radio" id="huey" name="drone" value="huey" checked>
                 <label for="huey">Disponibles</label>
                 <input type="radio" id="lastInput" name="drone" value="dewey">
                 <label for="dewey">Tous</label>
