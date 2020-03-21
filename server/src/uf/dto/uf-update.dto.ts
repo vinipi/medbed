@@ -9,6 +9,4 @@ export class UfUpdateDto {
     bedCovidTotal: number;
     @ApiProperty()
     bedCovidUsed: number;
-    @ApiProperty()
-    id: number;
 }

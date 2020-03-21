@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 
-enum Status {
+export enum Status {
     TODO = 'TODO',
     ACCEPTED = 'ACCEPTED',
     REFUSED = 'REFUSED',

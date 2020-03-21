@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Connection } from 'typeorm';
-import { BedRequest } from 'src/entities/bed-request.entity';
+import { BedRequest, Status } from 'src/entities/bed-request.entity';
 
 @Injectable()
 export class BedRequestService {
@@ -41,6 +41,14 @@ export class BedRequestService {
         const bedRequest = new BedRequest();
         bedRequest.siteId = siteId;
         return this.bedRequestRepository.insert(bedRequest);
+    }
+
+    update(id: number, status: Status) {
+        return this.bedRequestRepository.update({
+            id,
+        }, {
+            status,
+        });
     }
 
 }

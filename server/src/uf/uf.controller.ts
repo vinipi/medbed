@@ -1,8 +1,9 @@
-import { Controller, Body, Put, Post } from '@nestjs/common';
+import { Controller, Body, Put, Post, Param } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { UfUpdateDto } from 'src/uf/dto/uf-update.dto';
 import { UFService } from 'src/uf/uf.service';
 import { UfCreateDto } from 'src/uf/dto/uf-create.dto';
+import { identity } from 'rxjs';
 
 @Controller('/api/uf')
 @ApiTags('UF')
@@ -17,6 +18,7 @@ export class UFController {
     })
     @ApiResponse({ status: 200, type: Boolean })
     updateUf(
+        @Param('id') id: number,
         @Body() ufUpdateDto: UfUpdateDto,
     ): Promise<any> {
         return this.ufService.update(
@@ -24,7 +26,7 @@ export class UFController {
             ufUpdateDto.bedOtherUsed,
             ufUpdateDto.bedCovidTotal,
             ufUpdateDto.bedCovidUsed,
-            ufUpdateDto.id,
+            id,
         );
     }
 
