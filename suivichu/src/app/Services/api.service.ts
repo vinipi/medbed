@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Site } from '../Models/Site';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class ApiService {
       headers: { 'Content-Type': 'application/json' },
       params: { ...headersParamaters}
     };
-    return this.http.get<any>(this._baseHrefUFSite, httpOptions);
+    return this.http.get<Site>(this._baseHrefUFSite, httpOptions);
   }
 
   updateBedUF() { // PUT ​/api/uf/{id} => Update bed in an UF
