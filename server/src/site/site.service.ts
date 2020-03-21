@@ -40,7 +40,7 @@ export class SiteService {
             SUM(uf.bed_covid_used) AS bedCovidUsed,
             SUM(uf.bed_covid_available) AS bedCovidAvailable
             FROM site
-            INNER JOIN uf ON site.id = uf.site_id
+            LEFT JOIN uf ON site.id = uf.site_id
             WHERE site.url_key = ?`,
             [urlKey],
         );
