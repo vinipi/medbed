@@ -21,7 +21,7 @@ export class ApiService {
       headers: { 'Content-Type': 'application/json' },
       params: { ...headersParamaters}
     };
-    return this.http.get<Site>(this._baseHrefUFSite, httpOptions);
+    return this.http.get<Site>(this._baseHrefSiteURL, httpOptions); 
   }
 
   updateBedUF() { // PUT ​/api/uf/{id} => Update bed in an UF
