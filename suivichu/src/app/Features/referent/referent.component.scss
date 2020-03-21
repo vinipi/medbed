@@ -1,0 +1,47 @@
+#header {
+    background: #eee;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    p {
+        font-weight: 500;
+    }
+}
+
+#listFilter {
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    p {
+        font-weight: 500;
+    }
+    flex-wrap: wrap;
+    background: rgb(215, 215, 215);
+    padding: 10px;
+    margin: 10px auto;
+}
+
+
+#filterAffichage {
+    min-width: 222px;
+}
+#filterDisponibility {
+    min-width: 194px;
+}
+.filter2RadioButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        margin-bottom: .84375em;
+    }
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}

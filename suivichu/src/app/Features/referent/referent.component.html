@@ -1,0 +1,101 @@
+<div id="container">
+    <div id="header">
+        <p>COVID-19 : Disponibilités de lits</p>
+    </div>
+    <div>
+        <div id="listFilter">
+            <div>
+                <p>Filtrer par ville</p>
+                <mat-form-field>
+                    <mat-label>Toutes</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let ville of listVille" [value]="ville.key">
+                            {{ville.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <p>Filtrer par hôpital</p>
+                <mat-form-field>
+                    <mat-label>Toutes</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let hopital of listHopital" [value]="hopital.key">
+                            {{hopital.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <p>Filtrer par site</p>
+                <mat-form-field>
+                    <mat-label>Toutes</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let site of listSite" [value]="site.key">
+                            {{site.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div id="filterDisponibility" class="filter2RadioButton">
+                <p>Filtrer par disponibilité</p>
+                <div>
+                    <mat-radio-button class="example-radio-button" *ngFor="let data of disponibility"
+                        [value]="data.key">
+                        {{data.value}}
+                    </mat-radio-button>
+                </div>
+            </div>
+            <div id="filterAffichage" class="filter2RadioButton">
+                <p>Affichage</p>
+                <div>
+                    <mat-radio-button class="example-radio-button" *ngFor="let data of affichage" [value]="data.key">
+                        {{data.value}}
+                    </mat-radio-button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <div id="litData">
+            <div id="litCovid">
+                <div>
+                    <p>32</p>
+                    <p>Disponibles</p>
+                </div>
+                <div>
+                    <p>4</p>
+                    <p>Occupés</p>
+                </div>
+            </div>
+            <div id="litAutre">
+                <div>
+                    <p>4</p>
+                    <p>Disponibles</p>
+                </div>
+                <div>
+                    <p>8</p>
+                    <p>Occupés</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p>Filtrer par service</p>
+                <p>Filtrer par UF</p>
+                <p>Filtrer par disponibilité</p>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
