@@ -38,7 +38,7 @@ export class ReferentComponent implements OnInit {
     this.apiService.getSiteListUFs(currentUrlKey).subscribe((data) => {
       console.debug('getSiteListUFs', data);
       if (data && data.id === null) { // not found returns null
-        this.router.navigate(['/']);
+        //this.router.navigate(['/']);
         return;
       }
       this.currentSite = new Site(data);
