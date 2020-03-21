@@ -1,1 +1,99 @@
-<p>samu works!</p>
+<div id="container">
+  <div id="header">
+    <h1>État des lits en France</h1>
+  </div>
+  <div class="roundDiv">
+    <h2 class="titleDiv">Filtres</h2>
+    <div id="disponibility">
+      <p>Disponibilités</p>
+      <div>
+        <mat-checkbox [(ngModel)]="cbOnlyWithAvailable">N'afficher que les sites avec des lits disponibles
+        </mat-checkbox>
+      </div>
+    </div>
+    <div id="actionFiltre">
+      <div>
+        <p>À proximité</p>
+        <select>
+          <option value="">10km</option>
+        </select>
+      </div>
+      <div>
+        <p>Département</p>
+        <select>
+          <option value="">Tous</option>
+        </select>
+      </div>
+      <div>
+        <p>Hôpitaux</p>
+        <select>
+          <option value="">Tous</option>
+        </select>
+      </div>
+      <div>
+        <p>Affichage</p>
+        <mat-radio-group class="affichage-radio-group" aria-label="Affichage" [(ngModel)]="rdDisplayStyle">
+          <mat-radio-button value="list">Liste</mat-radio-button>
+          <mat-radio-button value="map">Carte de France</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+  <div class="roundDiv infoLit" *ngFor="let site of sitesResults">
+    <h1>{{site.name}}</h1>
+    <hr />
+    <div class="roundDiv-content">
+      <div class="detailedData">
+        <p class="titleDiv">Lits COVID</p>
+        <div class="flexDesignLit">
+          <div>
+            <div class="divImgBed greenBed">
+              <img src="./assets/Bed_available.png">
+            </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedCovidAvailable}}</p>
+              <p class="availabilityLit">Disponibles</p>
+            </div>
+          </div>
+          <div>
+            <div class="divImgBed redBed">
+              <img src="./assets/Bed_busy.png">
+            </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedCovidUsed}}</p>
+              <p class="availabilityLit">Occupés</p>
+            </div>
+          </div>
+        </div>
+        <button mat-button mat-raised-button>Réserver un lit COVID</button>
+      </div>
+      <div class="detailedData">
+        <p class="titleDiv">Autres lits</p>
+        <div class="flexDesignLit">
+          <div>
+            <div class="divImgBed greenBed">
+              <img src="./assets/Bed_available.png">
+            </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedOtherAvailable}}</p>
+              <p class="availabilityLit">Disponibles</p>
+            </div>
+          </div>
+          <div>
+            <div class="divImgBed redBed">
+              <img src="./assets/Bed_busy.png">
+            </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedOtherUsed}}</p>
+              <p class="availabilityLit">Occupés</p>
+            </div>
+          </div>
+        </div>
+        <button mat-button mat-raised-button>Réserver un autre lit</button>
+      </div>
+
+      <button style="margin: auto; font-size: 2.5em;" mat-button mat-icon-button>📞</button>
+
+    </div>
+  </div>
+</div>

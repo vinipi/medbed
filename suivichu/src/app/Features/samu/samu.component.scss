@@ -1,0 +1,172 @@
+#container {
+  color: #707070;
+  padding: 21px;
+}
+
+.titleDiv {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.barre {
+  position: absolute;
+  left: 0;
+}
+
+#header {
+  margin: 0 auto;
+  text-align: center;
+  color: #707070;
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 1.3rem;
+  }
+}
+
+.roundDiv {
+  border-radius: 20px;
+  background: white;
+  margin-top: 20px !important;
+  padding: 15px 10px 5px 10px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.2);
+
+  .roundDiv-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+}
+
+.affichage-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+
+  mat-radio-button {
+    margin: 5px;
+  }
+}
+.infoLit {
+  h1 {
+    flex: 1 0 100%;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 16px;
+  }
+  hr {
+    border-color: #eee;
+    margin: 0 -10px;
+    margin-bottom: 16px;
+  }
+  .detailedData {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    max-width: 49%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.flexDesignLit {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  > p {
+    font-weight: bold;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    > p {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.divImgBed {
+  width: 50px;
+  height: 50px;
+  border-radius: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  img {
+    width: 30px;
+    height: auto;
+  }
+}
+
+.divAavailabilityBed {
+  flex-grow: 1;
+  min-width: 85px;
+  margin-left: 10px;
+  :first-child {
+    font-weight: bold;
+  }
+  .availabilityLit {
+    font-size: 0.9rem;
+  }
+}
+.greenBed {
+  background-color: #ccf1e5;
+}
+.redBed {
+  background-color: #ffeff2;
+}
+
+#actionFiltre {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  > div {
+    margin-right: 10px;
+  }
+  select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.3);
+    background: white;
+    color: #707070;
+    height: 40px;
+    min-width: 130px;
+    width: 45%;
+    max-width: 150px;
+    padding: 7px 25px 7px 25px;
+    background: url("/assets/dropdownArrow.png") no-repeat right;
+    border-right: 10px solid transparent;
+    -webkit-appearance: none;
+  }
+}
+
+#disponibility {
+  display: flex;
+  flex-direction: column;
+  > div {
+    margin-top: 10px;
+  }
+  input {
+    margin-right: 5px;
+  }
+  #lastInput {
+    margin-left: 20px;
+  }
+  margin-bottom: 10px;
+}
