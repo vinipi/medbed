@@ -17,6 +17,26 @@ export class Site {
     @Column({ name: 'url_key', select: false })
     urlKey: string;
 
+    @ApiProperty()
+    @Column()
+    address: string;
+
+    @ApiProperty()
+    @Column({ name: 'phone_number' })
+    phoneNumber: string;
+
+    @ApiProperty()
+    @Column()
+    department: string;
+
+    @ApiProperty()
+    @Column()
+    longitude: number;
+
+    @ApiProperty()
+    @Column()
+    latitude: number;
+
     @ApiProperty({ type: [UF] })
     @OneToMany(type => UF, uf => uf.siteId)
     ufs: UF[];
