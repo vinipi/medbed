@@ -13,7 +13,7 @@ const routes: Routes = [
     component: ReferentComponent
   },
   { path: '',
-    redirectTo: '/disponibility',
+    redirectTo: '/referent',
     pathMatch: 'full'
   },
   { path: '**', component: NotFoundComponent }
