@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Site } from './entities/site.entity';
+import { Site } from '../entities/site.entity';
 import { Repository, Connection } from 'typeorm';
 
 @Injectable()
@@ -13,7 +13,17 @@ export class SiteService {
     ) { }
 
     findAll(): Promise<Site[]> {
-        return this.siteRepository.find();
+        return this.connection.query(
+            `SELECT
+            site.id AS siteId,
+            site.name AS siteName,
+            SUM(uf.bed_other_used) AS siteBedOtherUsed,
+            SUM(uf.bed_other_available) AS siteBedOtherAvailable,
+            SUM(uf.bed_covid_used) AS siteBedCovidUsed,
+            SUM(uf.bed_covid_available) AS siteBedCovidAvailable
+            FROM site
+            INNER JOIN uf ON site.id = uf.site_id`,
+        );
     }
 
     find(id: number): Promise<Site> {

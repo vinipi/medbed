@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Connection } from 'typeorm';
-import { UF } from './entities/uf.entity';
+import { UF } from 'src/entities/uf.entity';
 
 @Injectable()
 export class UFService {
