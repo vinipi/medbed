@@ -8,6 +8,7 @@ import { Site } from 'src/app/Models/Site';
 })
 export class SamuComponent implements OnInit {
 
+  disponibilityChecked = true;
   constructor() { }
 
   public cbOnlyWithAvailable = true;

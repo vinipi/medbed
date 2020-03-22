@@ -1,5 +1,5 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { ApiTags, ApiQuery, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Controller, Get, Param } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { SiteService } from './site.service';
 import { Site } from '../entities/site.entity';
 
@@ -10,14 +10,13 @@ export class SiteController {
         private readonly siteService: SiteService,
     ) { }
 
-    @Get('/')
-    @ApiQuery({ name: 'urlKey', type: 'string', required: false })
+    @Get('/:urlKey')
+    @ApiParam({ name: 'urlKey', type: 'string' })
     @ApiOperation({
         description: 'Return a site with all its UFs',
     })
     @ApiResponse({ status: 200, type: Site })
-    getSite(@Query('urlKey') urlKey): Promise<Site | Site[]> {
-        if (urlKey) return this.siteService.findByUrlKey(urlKey);
-        return this.siteService.findAll();
+    getSite(@Param('urlKey') urlKey): Promise<Site | Site[]> {
+        return this.siteService.findByUrlKey(urlKey);
     }
 }
