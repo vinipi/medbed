@@ -41,7 +41,7 @@
       "^.+\\.(t|j)s$": "ts-jest"
     }
   },
-  "license": "MIT",
+  "license": "GPL",
   "name": "medbed",
   "private": true,
   "scripts": {
