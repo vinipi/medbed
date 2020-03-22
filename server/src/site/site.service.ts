@@ -69,6 +69,17 @@ export class SiteService {
         return result;
     }
 
+    getDepartment() {
+        return this.connection.query(
+            `SELECT DISTINCT
+            d.code,
+            d.name
+            FROM department d
+            INNER JOIN site ON site.department = d.code
+            ORDER BY d.name`,
+        );
+    }
+
     async remove(id: string): Promise<void> {
         await this.siteRepository.delete(id);
     }
