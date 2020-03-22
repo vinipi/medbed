@@ -1,225 +1,99 @@
 <div id="container">
-    <div id="header">
-        <h1>Gestion des lits</h1>
-        <p>Site Hautpierre</p>
+  <div id="header">
+    <h1>État des lits en France</h1>
+  </div>
+  <div class="roundDiv">
+    <h2 class="titleDiv">Filtres</h2>
+    <div id="disponibility">
+      <p>Disponibilités</p>
+      <div>
+        <mat-checkbox [(ngModel)]="cbOnlyWithAvailable">N'afficher que les sites avec des lits disponibles
+        </mat-checkbox>
+      </div>
     </div>
-    <div class="roundDiv" id="newDemand">
-        <p class="titleDiv">Nouvelle demande de lit COVID</p>
-        <div id="buttonsNewDemand">
-            <button id="refuse">Refuser</button>
-            <button id="accept">Accepter</button>
-        </div>
+    <div id="actionFiltre">
+      <div>
+        <p>À proximité</p>
+        <select>
+          <option value="">10km</option>
+        </select>
+      </div>
+      <div>
+        <p>Département</p>
+        <select>
+          <option value="">Tous</option>
+        </select>
+      </div>
+      <div>
+        <p>Hôpitaux</p>
+        <select>
+          <option value="">Tous</option>
+        </select>
+      </div>
+      <div>
+        <p>Affichage</p>
+        <mat-radio-group class="affichage-radio-group" aria-label="Affichage" [(ngModel)]="rdDisplayStyle">
+          <mat-radio-button value="list">Liste</mat-radio-button>
+          <mat-radio-button value="map">Carte de France</mat-radio-button>
+        </mat-radio-group>
+      </div>
     </div>
-    <div class="roundDiv" id="infoLit">
-        <div class="detailedData">
-            <p class="titleDiv">Lits COVID</p>
-            <div class="flexDesignLit">
-                <div>
-                    <div class="divImgBed greenBed">
-                        <img src="./assets/Bed_available.png">
-                    </div>
-                    <div class="divAavailabilityBed">
-                        <p>32</p>
-                        <p class="availabilityLit">Disponibles</p>
-                    </div>
-                </div>
-                <div id="barre"></div>
-                <div>
-                    <div class="divImgBed redBed">
-                    <img src="./assets/Bed_busy.png">
-                </div>
-                    <div class="divAavailabilityBed">
-                        <p>4</p>
-                        <p class="availabilityLit">Occupés</p>
-                    </div>
-                </div>
+  </div>
+  <div class="roundDiv infoLit" *ngFor="let site of sitesResults">
+    <h1>{{site.name}}</h1>
+    <hr />
+    <div class="roundDiv-content">
+      <div class="detailedData">
+        <p class="titleDiv">Lits COVID</p>
+        <div class="flexDesignLit">
+          <div>
+            <div class="divImgBed greenBed">
+              <img src="./assets/Bed_available.png">
             </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedCovidAvailable}}</p>
+              <p class="availabilityLit">Disponibles</p>
+            </div>
+          </div>
+          <div>
+            <div class="divImgBed redBed">
+              <img src="./assets/Bed_busy.png">
+            </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedCovidUsed}}</p>
+              <p class="availabilityLit">Occupés</p>
+            </div>
+          </div>
         </div>
-        <div class="detailedData">
-            <p class="titleDiv">Autres lits</p>
-            <div class="flexDesignLit">
-                <div>
-                    <div class="divImgBed greenBed">
-                        <img src="./assets/Bed_available.png">
-                    </div>
-                    <div class="divAavailabilityBed">
-                        <p>4</p>
-                        <p class="availabilityLit">Disponibles</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="divImgBed redBed">
-                        <img src="./assets/Bed_busy.png">
-                    </div>
-                    <div class="divAavailabilityBed">
-                        <p>8</p>
-                        <p class="availabilityLit">Occupés</p>
-                    </div>
-                </div>
+        <button mat-button mat-raised-button>Réserver un lit COVID</button>
+      </div>
+      <div class="detailedData">
+        <p class="titleDiv">Autres lits</p>
+        <div class="flexDesignLit">
+          <div>
+            <div class="divImgBed greenBed">
+              <img src="./assets/Bed_available.png">
             </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedOtherAvailable}}</p>
+              <p class="availabilityLit">Disponibles</p>
+            </div>
+          </div>
+          <div>
+            <div class="divImgBed redBed">
+              <img src="./assets/Bed_busy.png">
+            </div>
+            <div class="divAavailabilityBed">
+              <p>{{site.bedOtherUsed}}</p>
+              <p class="availabilityLit">Occupés</p>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="roundDiv">
-        <p class="titleDiv">Filtres</p>
-        <div id="actionFiltre">
-            <div>
-                <p>Service</p>
-                <select>
-                    <option value="">Tous</option>
-                </select>
-            </div>
-            <div>
-                <p>UF</p>
-                <select>
-                    <option value="">Tous</option>
-                </select>
-            </div>
-        </div>
-        <div id="disponibility">
-            <p>Disponibilité</p>
-            <div>
-                <input type="text" class="form-control" id="monChamp" [(ngModel)]="disponibilityChecked" name="monChamp"/>
-            </div>
-        </div>
-    </div>
-    <div class="roundDiv">
-        <p class="titleDiv">REA MED - UF272727</p>
-            <div></div>
-                   <div class="flexAll">
-                        <div id="flexOne">
-                            <div class="titleDiv">Lits COVID</div>
-                                 <div class="flexInside">
-                                    <div class="divImgBed greenBed">
-                                        <img src="./assets/Bed_available.png">
-                                    </div>
-                                    <div class="textInside">
-                                        <p>32</p>
-                                        <p class="availabilityLit">Disponible</p>
-                                    </div>
+        <button mat-button mat-raised-button>Réserver un autre lit</button>
+      </div>
 
-                            </div>
-
-                      </div>
-
-                      <div id="flextwwo">
-                            <div class="titleDiv">Autres Lits</div>
-                                 <div class="flexInside">
-                                    <div class="divImgBed greenBed">
-                                        <img src="./assets/Bed_available.png">
-                                    </div>
-                                    <div class="textInside">
-                                        <p>32</p>
-                                        <p class="availabilityLit">Disponible</p>
-                                    </div>
-                            </div>
-                      </div>
-                  </div>
-<div class="titleDiv titleText">Lits COVID</div>
-
-<div class="middle">
-    <div id="total">
-            <div class="totalLit">
-                <div class="type">Total</div>
-                    <div class="plusLess">
-                        <div  id="less" class="less">-</div>
-                            <div class="total_covid">
-                                <input type="number" >
-                            </div>
-                                <div  id="plus" class="plus">+</div>
-                    </div>
-                    <div class="textInside">
-                        <p>32</p>
-                        <p class="availabilityLit">Disponible</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div id="flextwwo">
-                <div class="titleDiv">Autres Lits</div>
-                <div class="flexInside">
-                    <div class="divImgBed greenBed">
-                        <img src="./assets/Bed_available.png">
-                    </div>
-                    <div class="textInside">
-                        <p>32</p>
-                        <p class="availabilityLit">Disponible</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="titleDiv titleText">Lits COVID</div>
-
-        <div class="middle">
-            <div id="total">
-                <div class="totalLit">
-                    <div class="type">Total</div>
-                    <div class="plusLess">
-                        <div id="less" class="less">-</div>
-                        <div class="total_covid">
-                            <input type="number">
-                        </div>
-                        <div id="plus" class="plus">+</div>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-    <div id="total">
-            <div class="totalLit">
-                <div class="type">occupé</div>
-                    <div class="plusLess">
-                        <div id="less" class="less">-</div>
-                        <div class="total_covid">
-                            <input type="number">
-                        </div>
-                        <div id="plus" class="plus">+</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-<div class="titleDiv titleText">autre lits</div>
-<div class="middle">
-    <div id="total">
-            <div class="totalLit">
-                <div class="type">Total</div>
-                    <div class="plusLess">
-                        <div id="less" class="less">-</div>
-                        <div class="total_covid">
-                            <input type="number">
-                        </div>
-                        <div id="plus" class="plus">+</div>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-    <div id="total">
-            <div class="totalLit">
-                <div class="type">ocuppé </div>
-                    <div class="plusLess">
-                        <div id="less" class="less">-</div>
-                        <div idclass="total_covid">
-                            <input type="number" name="">
-                        </div>
-                        <div id="plus" class="plus">+</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="register">Enrengistrer</div>
-
+      <button style="margin: auto; font-size: 2.5em;" mat-button mat-icon-button>📞</button>
 
     </div>
-
-<div id="add">Ajouter un UF</div>
-
-<div id="thanks">Fais avec :coeur :amour</div>
+  </div>
+</div>

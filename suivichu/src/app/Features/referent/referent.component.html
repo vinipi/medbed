@@ -1,91 +1,200 @@
 <div id="container">
-  <div id="header">
-      <h1>Gestion des lits</h1>
-      <p>{{currentSite?.name}}</p>
-  </div>
-  <div class="roundDiv" id="newDemand">
-      <p class="titleDiv">Nouvelle demande de lit COVID</p>
-      <div id="buttonsNewDemand">
-          <button id="refuse">Refuser</button>
-          <button id="accept">Accepter</button>
-      </div>
-  </div>
-  <div class="roundDiv" id="infoLit">
-      <div class="detailedData">
-          <p class="titleDiv">Lits COVID</p>
-          <div class="flexDesignLit">
-              <div>
-                  <div class="divImgBed greenBed">
-                      <img src="./assets/Bed_available.png">
-                  </div>
-                  <div class="divAavailabilityBed">
-                      <p>{{currentSite?.bedCovidAvailable}}</p>
-                      <p class="availabilityLit">Disponibles</p>
-                  </div>
-              </div>
-              <div id="barre"></div>
-              <div>
-                  <div class="divImgBed redBed">
-                      <img src="./assets/Bed_busy.png">
-                  </div>
-                  <div class="divAavailabilityBed">
-                      <p>{{currentSite?.bedCovidUsed}}</p>
-                      <p class="availabilityLit">Occupés</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="detailedData">
-          <p class="titleDiv">Autres lits</p>
-          <div class="flexDesignLit">
-              <div>
-                  <div class="divImgBed greenBed">
-                      <img src="./assets/Bed_available.png">
-                  </div>
-                  <div class="divAavailabilityBed">
-                      <p>{{currentSite?.bedOtherAvailable}}</p>
-                      <p class="availabilityLit">Disponibles</p>
-                  </div>
-              </div>
-              <div>
-                  <div class="divImgBed redBed">
-                      <img src="./assets/Bed_busy.png">
-                  </div>
-                  <div class="divAavailabilityBed">
-                      <p>{{currentSite?.bedOtherUsed}}</p>
-                      <p class="availabilityLit">Occupés</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="roundDiv">
-      <p class="titleDiv">Filtres</p>
-      <div id="actionFiltre">
-          <div>
-              <p>Service</p>
-              <select>
-                  <option value="">Tous</option>
-              </select>
-          </div>
-          <div>
-              <p>UF</p>
-              <select>
-                  <option value="">Tous</option>
-                  <option *ngFor="let uf of currentSite?.ufs" [value]="uf.id">
-                      {{uf.name}}
-                  </option>
-              </select>
-          </div>
-      </div>
-      <div id="disponibility">
-          <p>Disponibilité</p>
-          <div>
-              <input type="radio" id="huey" name="drone" value="huey" checked>
-              <label for="huey">Disponibles</label>
-              <input type="radio" id="lastInput" name="drone" value="dewey">
-              <label for="dewey">Tous</label>
-          </div>
-      </div>
-  </div>
+    <div id="header">
+        <h1>Gestion des lits</h1>
+        <p>{{currentSite?.name}}</p>
+    </div>
+    <div class="roundDiv" id="newDemand">
+        <p class="titleDiv">Nouvelle demande de lit COVID</p>
+        <div id="buttonsNewDemand">
+            <button id="refuse">Refuser</button>
+            <button id="accept">Accepter</button>
+        </div>
+    </div>
+    <div class="roundDiv" id="infoLit">
+        <div class="detailedData">
+            <p class="titleDiv">Lits COVID</p>
+            <div class="flexDesignLit">
+                <div>
+                    <div class="divImgBed greenBed">
+                        <img src="./assets/Bed_available.png">
+                    </div>
+                    <div class="divAavailabilityBed">
+                        <p>{{currentSite?.bedCovidAvailable}}</p>
+                        <p class="availabilityLit">Disponibles</p>
+                    </div>
+                </div>
+                <div id="barre"></div>
+                <div>
+                    <div class="divImgBed redBed">
+                        <img src="./assets/Bed_busy.png">
+                    </div>
+                    <div class="divAavailabilityBed">
+                        <p>{{currentSite?.bedCovidUsed}}</p>
+                        <p class="availabilityLit">Occupés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detailedData">
+            <p class="titleDiv">Autres lits</p>
+            <div class="flexDesignLit">
+                <div>
+                    <div class="divImgBed greenBed">
+                        <img src="./assets/Bed_available.png">
+                    </div>
+                    <div class="divAavailabilityBed">
+                        <p>{{currentSite?.bedOtherAvailable}}</p>
+                        <p class="availabilityLit">Disponibles</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="divImgBed redBed">
+                        <img src="./assets/Bed_busy.png">
+                    </div>
+                    <div class="divAavailabilityBed">
+                        <p>{{currentSite?.bedOtherUsed}}</p>
+                        <p class="availabilityLit">Occupés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="roundDiv">
+        <p class="titleDiv">Filtres</p>
+        <div id="actionFiltre">
+            <div>
+                <p>Service</p>
+                <select>
+                    <option value="">Tous</option>
+                </select>
+            </div>
+            <div>
+                <p>UF</p>
+                <select>
+                    <option value="">Tous</option>
+                    <option *ngFor="let uf of currentSite?.ufs" [value]="uf.id">
+                        {{uf.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div id="disponibility">
+            <p>Disponibilité</p>
+            <div>
+                <input type="radio" id="huey" name="drone" value="huey" checked>
+                <label for="huey">Disponibles</label>
+                <input type="radio" id="lastInput" name="drone" value="dewey">
+                <label for="dewey">Tous</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="roundDiv">
+        <p class="titleDiv">REA MED - UF272727</p>
+        <div></div>
+        <div class="flexAll">
+            <div id="flexOne">
+                <div class="titleDiv">Lits COVID</div>
+                <div class="flexInside">
+                    <div class="divImgBed greenBed">
+                        <img src="./assets/Bed_available.png">
+                    </div>
+                    <div class="textInside">
+                        <p>32</p>
+                        <p class="availabilityLit">Disponible</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="flextwwo">
+                <div class="titleDiv">Autres Lits</div>
+                <div class="flexInside">
+                    <div class="divImgBed greenBed">
+                        <img src="./assets/Bed_available.png">
+                    </div>
+                    <div class="textInside">
+                        <p>32</p>
+                        <p class="availabilityLit">Disponible</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="titleDiv titleText">Lits COVID</div>
+
+        <div class="middle">
+            <div id="total">
+                <div class="totalLit">
+                    <div class="type">Total</div>
+                    <div class="plusLess">
+                        <div id="less" class="less">-</div>
+                        <div class="total_covid">
+                            <input type="number">
+                        </div>
+                        <div id="plus" class="plus">+</div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+            <div id="total">
+                <div class="totalLit">
+                    <div class="type">occupé</div>
+                    <div class="plusLess">
+                        <div id="less" class="less">-</div>
+                        <div class="total_covid">
+                            <input type="number">
+                        </div>
+                        <div id="plus" class="plus">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="titleDiv titleText">autre lits</div>
+        <div class="middle">
+            <div id="total">
+                <div class="totalLit">
+                    <div class="type">Total</div>
+                    <div class="plusLess">
+                        <div id="less" class="less">-</div>
+                        <div class="total_covid">
+                            <input type="number">
+                        </div>
+                        <div id="plus" class="plus">+</div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div id="total">
+                <div class="totalLit">
+                    <div class="type">ocuppé </div>
+                    <div class="plusLess">
+                        <div id="less" class="less">-</div>
+                        <div idclass="total_covid">
+                            <input type="number" name="">
+                        </div>
+                        <div id="plus" class="plus">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="register">Enregistrer</button>
+
+
+    </div>
+
+    <button id="add">Ajouter un service ou un UF</button>
 </div>
+
+<div id="thanks">Fait avec ❤ pour vous aider à nous sauver</div> <!-- TODO move to base component with header-->
