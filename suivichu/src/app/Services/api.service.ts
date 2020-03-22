@@ -16,7 +16,7 @@ export class ApiService {
 
   // UF = Unité Fonctionnelle
   getSiteListUFs(urlKey: string) { // GET ​/api​/site => Return a site with all its UFs
-    return this.http.get<Site>(this._baseHrefSiteURL + urlKey);
+    return this.http.get<Site>(this._baseHrefSiteURL + '/' + urlKey);
   }
 
   updateBedUF() { // PUT ​/api/uf/{id} => Update bed in an UF
